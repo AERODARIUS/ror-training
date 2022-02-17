@@ -2406,3 +2406,1283 @@ Filter chain halted as #<Proc:0x00007fad5b209530 /Users/daricruz/.rvm/rubies/rub
 Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+Migrating to AddTopicToArticles (20220214060508)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "articles" ADD "topic" integer DEFAULT 0[0m
+  ↳ db/migrate/20220214060508_add_topic_to_articles.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220214060508"]]
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/rake-13.0.6/lib/rake/task.rb:281
+Started GET "/articles" for ::1 at 2022-02-14 03:05:53 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 246ms (Views: 233.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/articles/1/edit" for ::1 at 2022-02-14 03:05:58 -0300
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:17
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_form.html.erb (32.0ms)
+  Rendered articles/edit.html.erb within layouts/application (34.4ms)
+Completed 200 OK in 71ms (Views: 63.6ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/articles/1" for ::1 at 2022-02-14 03:06:03 -0300
+Processing by ArticlesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jgWk+uMg5h+GCqfXMsKiudrhjjf1M6Gv9sM72r3FxNdp/wv9aMr/1tRjXCvi8ViOJyCVcdrKxl/53DUDtjxALw==", "article"=>{"title"=>"My first article", "topic"=>"sadasdsa", "text"=>"This is my first article! (edited)"}, "commit"=>"Update Article", "id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:31
+Unpermitted parameter: :topic
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/articles_controller.rb:33
+Redirected to http://localhost:3000/articles/1
+Completed 302 Found in 5ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/1" for ::1 at 2022-02-14 03:06:03 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:18
+  Rendered collection of comments/_comment.html.erb [1 times] (1.8ms)
+  Rendered comments/_form.html.erb (2.0ms)
+  Rendered articles/show.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 60ms (Views: 56.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/articles/1" for ::1 at 2022-02-14 03:08:31 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:18
+  Rendered collection of comments/_comment.html.erb [1 times] (1.2ms)
+  Rendered comments/_form.html.erb (2.3ms)
+  Rendered articles/show.html.erb within layouts/application (15.4ms)
+Completed 200 OK in 52ms (Views: 40.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/articles/1" for ::1 at 2022-02-14 03:08:34 -0300
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/articles_controller.rb:9
+  Rendering articles/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."article_id" = ?[0m  [["article_id", 1]]
+  ↳ app/views/articles/show.html.erb:18
+  Rendered collection of comments/_comment.html.erb [1 times] (0.6ms)
+  Rendered comments/_form.html.erb (1.7ms)
+  Rendered articles/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 33ms (Views: 29.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-14 03:08:39 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 56ms (Views: 52.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:08:42 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (4.7ms)
+  Rendered articles/new.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 45ms (Views: 42.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 03:08:47 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jfFoI5l/vjGUuyN4kP+HL7itD9N9mhP/MtSIza0qRvI5h1fcZmyUV2CbgAnu8IDujvLzi1F2cK5mGBBOp3sUag==", "article"=>{"title"=>"dsfasdfdsf", "topic"=>"otherssdfs", "text"=>"sdfsd"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssdfs' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-14 03:10:12 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t2IXQjkfz+x2D25NfKi++hk+Zr4ABISPtLtGdKh/g16X0VBfzMbdi1RCNWMUIVn7QHUjdyFTP7d57+OEwy9Siw==", "article"=>{"title"=>"", "topic"=>"otherssdf", "text"=>"sdfsd"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssdf' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-14 03:10:17 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t2IXQjkfz+x2D25NfKi++hk+Zr4ABISPtLtGdKh/g16X0VBfzMbdi1RCNWMUIVn7QHUjdyFTP7d57+OEwy9Siw==", "article"=>{"title"=>"", "topic"=>"others", "text"=>"sdfsd"}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (44.6ms)
+  Rendered articles/new.html.erb within layouts/application (46.5ms)
+Completed 200 OK in 100ms (Views: 94.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-14 03:12:02 -0300
+Processing by ArticlesController#index as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.4ms)
+
+
+  
+NameError (undefined local variable or method `topic' for #<Class:0x00007f943dd03cd8>
+Did you mean?  topics):
+  
+app/models/article.rb:13:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:5:in `index'
+Started GET "/articles" for ::1 at 2022-02-14 03:12:58 -0300
+Processing by ArticlesController#index as HTML
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `topic' for #<Class:0x00007f943a6e16c8>
+Did you mean?  topics):
+  
+app/models/article.rb:13:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:5:in `index'
+Started POST "/articles" for ::1 at 2022-02-14 03:13:03 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t2IXQjkfz+x2D25NfKi++hk+Zr4ABISPtLtGdKh/g16X0VBfzMbdi1RCNWMUIVn7QHUjdyFTP7d57+OEwy9Siw==", "article"=>{"title"=>"", "topic"=>"othersa", "text"=>"sdfsd"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `topic' for #<Class:0x00007f94421fd190>
+Did you mean?  topics):
+  
+app/models/article.rb:13:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-14 03:13:16 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t2IXQjkfz+x2D25NfKi++hk+Zr4ABISPtLtGdKh/g16X0VBfzMbdi1RCNWMUIVn7QHUjdyFTP7d57+OEwy9Siw==", "article"=>{"title"=>"", "topic"=>"othersa", "text"=>"sdfsd"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms)
+
+
+  
+ArgumentError ('othersa' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-14 03:15:04 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"t2IXQjkfz+x2D25NfKi++hk+Zr4ABISPtLtGdKh/g16X0VBfzMbdi1RCNWMUIVn7QHUjdyFTP7d57+OEwy9Siw==", "article"=>{"title"=>"", "topic"=>"othersa", "text"=>"sdfsd"}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('othersa' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:15:07 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (79.6ms)
+  Rendered articles/new.html.erb within layouts/application (81.2ms)
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `input' for #<ActionView::Helpers::FormBuilder:0x00007f94438e5f60>):
+    20:   </p>
+    21:  
+    22:   <p>
+    23:     <%= f.input :topic, :as => :select, :collection => Article.topics.keys.to_a %><br>
+    24:   </p>
+    25:  
+    26:   <p>
+  
+app/views/articles/_form.html.erb:23:in `block in _app_views_articles__form_html_erb__4244487527563217650_32820'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb__4244487527563217650_32820'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___470515363946064974_32800'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:16:03 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (14.7ms)
+  Rendered articles/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 47ms (Views: 44.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:16:16 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.8ms)
+  Rendered articles/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 32ms (Views: 30.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:18:18 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (0.8ms)
+  Rendered articles/new.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/daricruz/Documents/github/ror-training/blog/app/views/articles/_form.html.erb:23: syntax error, unexpected ',', expecting =>
+...:select, Article.topic_options, {}, class:'form-control' );@...
+...                              ^
+):
+  
+app/views/articles/_form.html.erb:23: syntax error, unexpected ',', expecting =>
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___470515363946064974_33660'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:18:19 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (1.0ms)
+  Rendered articles/new.html.erb within layouts/application (3.1ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/daricruz/Documents/github/ror-training/blog/app/views/articles/_form.html.erb:23: syntax error, unexpected ',', expecting =>
+...:select, Article.topic_options, {}, class:'form-control' );@...
+...                              ^
+):
+  
+app/views/articles/_form.html.erb:23: syntax error, unexpected ',', expecting =>
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___470515363946064974_34200'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:18:48 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (15.0ms)
+  Rendered articles/new.html.erb within layouts/application (16.8ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `topic_options' for #<Class:0x00007f94422a9f58>):
+    20:   </p>
+    21:  
+    22:   <p>
+    23:     <%= f.select :topic, Article.topic_options, {}, class:'form-control' %><br>
+    24:   </p>
+    25:  
+    26:   <p>
+  
+app/views/articles/_form.html.erb:23:in `block in _app_views_articles__form_html_erb__4244487527563217650_34760'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb__4244487527563217650_34760'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___470515363946064974_34740'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:22:30 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (1.1ms)
+  Rendered articles/new.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 1.2ms)
+
+
+  
+SyntaxError (/Users/daricruz/Documents/github/ror-training/blog/app/views/articles/_form.html.erb:23: syntax error, unexpected ',', expecting =>
+...:select, Article.topic_options, {}, class:'form-control' );@...
+...                              ^
+):
+  
+app/views/articles/_form.html.erb:23: syntax error, unexpected ',', expecting =>
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___871900855148492070_16260'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:22:58 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (30.9ms)
+  Rendered articles/new.html.erb within layouts/application (32.8ms)
+Completed 200 OK in 269ms (Views: 266.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:23:15 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.8ms)
+  Rendered articles/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:23:23 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.2ms)
+  Rendered articles/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 29ms (Views: 27.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:26:39 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `topic' for #<Class:0x00007fdecd51e5b0>
+Did you mean?  topics):
+  
+app/models/article.rb:13:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:27:41 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.5ms)
+
+
+  
+NoMethodError (undefined method `topic' for #<Class:0x00007faab33c5518>
+Did you mean?  topics):
+  
+app/models/article.rb:10:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:28:37 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (16.0ms)
+  Rendered articles/new.html.erb within layouts/application (17.4ms)
+Completed 200 OK in 228ms (Views: 213.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:29:10 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.3ms)
+  Rendered articles/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 46ms (Views: 36.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:29:11 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.2ms)
+  Rendered articles/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 33ms (Views: 30.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:29:12 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.6ms)
+  Rendered articles/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 03:29:38 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.4ms)
+  Rendered articles/new.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 27ms (Views: 25.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 03:29:41 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TAz6tU35OzgNLaDL9XaPLUQVT+ORR0A9+1v9XSTQxsRsv72ouCApXy9g++Wd/2gsHV4KKrAQ+wU2D1itT4AXEQ==", "article"=>{"title"=>"", "topic"=>"otherssd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:29:59 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.3ms)
+  Rendered articles/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 44ms (Views: 31.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 03:30:03 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fJlb+dzAhVh+m7KOLjBmmc5u4MWlAT3IBN1CUf4YgQxcKhzkKRmXP1zW6aBGuYGYlyWlDIRWhvDJieehlUhQ2Q==", "article"=>{"title"=>"", "topic"=>"otherssd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 03:30:59 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.1ms)
+  Rendered articles/new.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 41ms (Views: 28.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2022-02-14 16:57:45 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  Rendered welcome/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 349ms (Views: 340.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-14 16:57:49 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 67ms (Views: 49.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 16:58:09 -0300
+Processing by ArticlesController#new as HTML
+Filter chain halted as #<Proc:0x00007fbdc5d8afd8 /Users/daricruz/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/actionpack-5.2.6/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 16:58:30 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (33.3ms)
+  Rendered articles/new.html.erb within layouts/application (35.7ms)
+Completed 200 OK in 66ms (Views: 63.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 17:00:15 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms)
+
+
+  
+NameError (undefined local variable or method `topic' for #<Class:0x00007fbdc85cad18>
+Did you mean?  topics):
+  
+app/models/article.rb:13:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:00:34 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (5.4ms)
+  Rendered articles/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 48ms (Views: 37.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 17:01:47 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.6ms)
+  Rendered articles/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 35ms (Views: 33.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:01:50 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M7ha8A9jwE6TA2JlZXvx//a4X9bCH6S16afxRhoinpoTCx3t+rrSKbFOOUsN8hb+r/MaH+NIH40k81S2cXJPTw==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Filter chain halted as #<Proc:0x00007fbdc3eef380 /Users/daricruz/.rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/gems/actionpack-5.2.6/lib/action_controller/metal/http_authentication.rb:72> rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:01:50 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"M7ha8A9jwE6TA2JlZXvx//a4X9bCH6S16afxRhoinpoTCx3t+rrSKbFOOUsN8hb+r/MaH+NIH40k81S2cXJPTw==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:02:04 -0300
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (16.2ms)
+  Rendered articles/new.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 266ms (Views: 246.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:02:06 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DAQrMnp8CGgZltBkyIdOhmErltcJo+mDTTZ86LI5iNcst2wvj6UaDzvbi0qgDqmHOGDTHij0UruAYtkY2WlZAg==", "article"=>{"title"=>"", "topic"=>"otherssd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-14 17:02:25 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DAQrMnp8CGgZltBkyIdOhmErltcJo+mDTTZ86LI5iNcst2wvj6UaDzvbi0qgDqmHOGDTHij0UruAYtkY2WlZAg==", "article"=>{"title"=>"", "topic"=>"otherssd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles" for ::1 at 2022-02-14 17:03:39 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 56ms (Views: 45.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:03:42 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DAQrMnp8CGgZltBkyIdOhmErltcJo+mDTTZ86LI5iNcst2wvj6UaDzvbi0qgDqmHOGDTHij0UruAYtkY2WlZAg==", "article"=>{"title"=>"", "topic"=>"otherssd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherssd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:03:44 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.9ms)
+  Rendered articles/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 49ms (Views: 46.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 17:03:45 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (5.8ms)
+  Rendered articles/new.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 44ms (Views: 41.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 17:03:55 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (15.0ms)
+  Rendered articles/new.html.erb within layouts/application (17.2ms)
+Completed 200 OK in 261ms (Views: 243.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:03:59 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3LRfnaaujtpcD96VAWlhE/Mfur6wWaLO2VdIe1iwHkH8BxiAU3ecvX5Chbtp4IYSqlT/d5EOGfYUA+2LM+DPlA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:05:10 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.8ms)
+  Rendered articles/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 46ms (Views: 31.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:05:13 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dspxniDcQjUZ+iKz7nNaMzE2kfvrkIB2wmiAnmGDFtVWeTaD1QVQUju3eZ2G+r0yaH3UMsrHO04PPCVuCtPHAA==", "article"=>{"title"=>"", "topic"=>"yessd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('yessd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:06:33 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.8ms)
+  Rendered articles/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 50ms (Views: 38.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:06:38 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hsHpoa4tu1wqHmq722ST5uv3YD65uZ/xHYAn6V2fpJGmcq68W/SpOwhTMZWz7XTnsrwl95juJMnQ1IIZNs91RA==", "article"=>{"title"=>"", "topic"=>"yes", "text"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.0ms)
+  Rendered articles/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 35ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:06:46 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gmjwbAmlNviWpAoS1nvw15tWZKqI0QxsAX2lHwPbshSi27dx/Hwkn7TpUTy+8hfWwh0hY6mGt1TMKQDvaItjwQ==", "article"=>{"title"=>"", "topic"=>"yess", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('yess' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles" for ::1 at 2022-02-14 17:07:23 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (9.2ms)
+Completed 200 OK in 43ms (Views: 35.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-14 17:07:24 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 37ms (Views: 34.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 17:07:26 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (5.2ms)
+  Rendered articles/new.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 58ms (Views: 55.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:07:29 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IuZA4POYvjN87KJ8blZxaIFph5FR+lKoNx0VjTUuy1WWkH8fDIuUVYjMAQ0QWXaptzZ7yX0WMflj0Y0OP3+ZzQ==", "article"=>{"title"=>"", "topic"=>"0sdfdsf", "text"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.7ms)
+  Rendered articles/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 32ms (Views: 26.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-14 17:08:03 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 32ms (Views: 29.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-14 17:08:05 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (10.5ms)
+  Rendered articles/new.html.erb within layouts/application (14.4ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `topics' for #<Class:0x00007f7bbbfaeae0>):
+    21:  
+    22:   <p>
+    23:     <%= f.label :topic %><br>
+    24:     <%= f.select :topic, options_for_select(Article.topics.map {|key, value| [key.titleize, Article.topics.key(value)]}, @article.topic) %>
+    25:   </p>
+    26:  
+    27:   <p>
+  
+app/views/articles/_form.html.erb:24:in `block in _app_views_articles__form_html_erb___2700899274968827474_30680'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb___2700899274968827474_30680'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___1229152356343847289_30660'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:08:53 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (5.3ms)
+  Rendered articles/new.html.erb within layouts/application (7.1ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::Attend):
+    21:  
+    22:   <p>
+    23:     <%= f.label :topic %><br>
+    24:     <%= f.select :topic, options_for_select(Attend::STATUS_OPTIONS.map {|key, value| [key.titleize, Attend::STATUS_OPTIONS.key(value)]}, @article.topic) %>
+    25:   </p>
+    26:  
+    27:   <p>
+  
+app/views/articles/_form.html.erb:24:in `block in _app_views_articles__form_html_erb___2700899274968827474_31240'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb___2700899274968827474_31240'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___1229152356343847289_31220'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:09:12 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (14.6ms)
+  Rendered articles/new.html.erb within layouts/application (16.5ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `STATUS_OPTIONS' for #<Class:0x00007f7bbbfaeae0>):
+    21:  
+    22:   <p>
+    23:     <%= f.label :topic %><br>
+    24:     <%= f.select :topic, options_for_select(Article.STATUS_OPTIONS.map {|key, value| [key.titleize, Article.STATUS_OPTIONS.key(value)]}, @article.topic) %>
+    25:   </p>
+    26:  
+    27:   <p>
+  
+app/views/articles/_form.html.erb:24:in `block in _app_views_articles__form_html_erb___2700899274968827474_31780'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb___2700899274968827474_31780'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___1229152356343847289_31760'
+Started GET "/articles/new" for ::1 at 2022-02-14 17:10:38 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.9ms)
+  Rendered articles/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 39ms (Views: 36.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-14 17:10:46 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UjIB9/gFxurlxURCGzs+StBy1tmv/FZ6B52kjrMlit5ygUbqDdzUjceIH2xzstlLiTmTEI6r7ULKyQF+2HVbCw==", "article"=>{"title"=>"", "topic"=>"yes", "text"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.8ms)
+  Rendered articles/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 41ms (Views: 34.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-15 07:16:39 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.4ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 78ms (Views: 62.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 07:16:41 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (4.1ms)
+  Rendered articles/new.html.erb within layouts/application (8.4ms)
+Completed 200 OK in 53ms (Views: 48.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 07:18:49 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DXdBeQkdkfrKYRv2MFqntCDPVev14psmEdYsOwCLANi5AX6G9g67nD5BuIdOVaB1FpCps9kO+HdFGrS4CtpSQA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.7ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:23:25 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (4.5ms)
+  Rendered articles/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 40ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 07:23:26 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (1.9ms)
+  Rendered articles/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 30ms (Views: 28.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 07:23:37 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PD3dxgMD8Z0PE7UlFk396DDzTa2+uVXl7+CSR1Ptlw0cjprb9trj+i1e7gt+xBrpabgIZJ/u7t0itDe3OL1G2A==", "article"=>{"title"=>"", "topic"=>"othersw", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('othersw' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:39:35 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.5ms)
+  Rendered articles/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 43ms (Views: 29.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 07:39:38 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8BwRc4RadEHLq027Vumttu2sY0bTR6OwPuRDOwCwiWXQr1ZucYNmJunmFpU+YEq3tOcmj/IQGIjzsObLa+BYsA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:40:16 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.3ms)
+  Rendered articles/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 43ms (Views: 29.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 07:40:19 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"45A5//lMW0yEotdCUcDNX9hav8yOu5ntFYBSOilFLynDI37iDJVJK6bvjGw5SSpegRH6Ba/sItXY1PfKQhX+/A==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:43:30 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (128.0ms)
+  Rendered articles/new.html.erb within layouts/application (130.0ms)
+Completed 500 Internal Server Error in 135ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007f7bbf203a90>:0x00007f7bb65d58e8>
+Did you mean?  for
+               fork):
+    22:   <p>
+    23:     <%= f.label :topic %><br>
+    24:     <%#= f.text_field :topic %>
+    25:     <%= form.select :status, Post.statuses.keys %>
+    26:   </p>
+    27:  
+    28:   <p>
+  
+app/views/articles/_form.html.erb:25:in `block in _app_views_articles__form_html_erb___2700899274968827474_50620'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb___2700899274968827474_50620'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___1229152356343847289_50600'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:43:45 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (119.8ms)
+  Rendered articles/new.html.erb within layouts/application (122.0ms)
+Completed 500 Internal Server Error in 129ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007f7bbf203a90>:0x00007f7bb6ef7480>
+Did you mean?  for
+               fork):
+    22:   <p>
+    23:     <%= f.label :topic %><br>
+    24:     <%#= f.text_field :topic %>
+    25:     <%= form.select :status, Article.topic.keys %>
+    26:   </p>
+    27:  
+    28:   <p>
+  
+app/views/articles/_form.html.erb:25:in `block in _app_views_articles__form_html_erb___2700899274968827474_51260'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb___2700899274968827474_51260'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___1229152356343847289_51240'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:43:51 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (146.0ms)
+  Rendered articles/new.html.erb within layouts/application (147.8ms)
+Completed 500 Internal Server Error in 153ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `form' for #<#<Class:0x00007f7bbf203a90>:0x00007f7bbf2105b0>
+Did you mean?  for
+               fork):
+    22:   <p>
+    23:     <%= f.label :topic %><br>
+    24:     <%#= f.text_field :topic %>
+    25:     <%= form.select :status, Article.topics.keys %>
+    26:   </p>
+    27:  
+    28:   <p>
+  
+app/views/articles/_form.html.erb:25:in `block in _app_views_articles__form_html_erb___2700899274968827474_51800'
+app/views/articles/_form.html.erb:1:in `_app_views_articles__form_html_erb___2700899274968827474_51800'
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___1229152356343847289_51780'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:44:25 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (12.3ms)
+  Rendered articles/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 47ms (Views: 44.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 07:46:59 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms)
+
+
+  
+NameError (undefined local variable or method `topics' for #<Class:0x00007f7bbc8dd5f8>):
+  
+app/models/article.rb:5:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:47:01 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `topics' for #<Class:0x00007f7bb6636a30>):
+  
+app/models/article.rb:5:in `<class:Article>'
+app/models/article.rb:2:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:47:10 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.9ms)
+  Rendered articles/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 43ms (Views: 30.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 07:47:40 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.9ms)
+  Rendered articles/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 07:47:45 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.5ms)
+  Rendered articles/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 35ms (Views: 31.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 07:50:12 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Article::ArticleValidator):
+  
+app/models/article.rb:12:in `<class:Article>'
+app/models/article.rb:1:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 07:51:20 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Article::ArticleValidator):
+  
+app/models/article.rb:2:in `<class:Article>'
+app/models/article.rb:1:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:31:12 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Article::ArticleValidator):
+  
+app/models/article.rb:2:in `<class:Article>'
+app/models/article.rb:1:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:31:26 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/daricruz/Documents/github/ror-training/blog/app/controllers/article_validator.rb:8: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/article_validator.rb:8: syntax error, unexpected end-of-input, expecting `end'
+app/models/article.rb:2:in `<class:Article>'
+app/models/article.rb:1:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:31:41 -0300
+Processing by ArticlesController#new as HTML
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+TypeError (wrong argument type Class (expected Module)):
+  
+app/models/article.rb:2:in `include'
+app/models/article.rb:2:in `<class:Article>'
+app/models/article.rb:1:in `<main>'
+app/controllers/articles_controller.rb:13:in `new'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:31:51 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.0ms)
+  Rendered articles/new.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 63ms (Views: 46.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:31:55 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZtUFNWcKm9tOrKiShevRz3DxW53FvRKrSbhGVBlla0VGZkIoktOJvGzh87ztYjbOKboeVOTqqZOE7OOkcjW6kA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-15 08:32:20 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZtUFNWcKm9tOrKiShevRz3DxW53FvRKrSbhGVBlla0VGZkIoktOJvGzh87ztYjbOKboeVOTqqZOE7OOkcjW6kA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/daricruz/Documents/github/ror-training/blog/app/controllers/article_validator.rb:4: syntax error, unexpected `when'
+    when Article::TOPIC_OPTIONS.inclu...
+    ^~~~
+/Users/daricruz/Documents/github/ror-training/blog/app/controllers/article_validator.rb:8: syntax error, unexpected `end', expecting end-of-input):
+  
+app/controllers/article_validator.rb:4: syntax error, unexpected `when'
+app/controllers/article_validator.rb:8: syntax error, unexpected `end', expecting end-of-input
+app/models/article.rb:12:in `<class:Article>'
+app/models/article.rb:1:in `<main>'
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:33:09 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.5ms)
+  Rendered articles/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 47ms (Views: 33.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:33:12 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dfwP5bSkl76dePDd9x1IJ/pZ1cqfYSST0KIRBaFQHslVT0j4QX2F2b81q/OflK8moxKQA742n6sd9rT1ygDPHA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-15 08:35:54 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dfwP5bSkl76dePDd9x1IJ/pZ1cqfYSST0KIRBaFQHslVT0j4QX2F2b81q/OflK8moxKQA742n6sd9rT1ygDPHA==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:43:04 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.1ms)
+  Rendered articles/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 51ms (Views: 34.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:43:07 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6uvmK449M/3+RP1m0/RW524RagdKU8zTX95giuMYRkjKWKE2e+QhmtwJpki7fbHmN1ovzmsEd+uSisV6iEiXnQ==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 08:44:11 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.8ms)
+  Rendered articles/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 44ms (Views: 30.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:44:12 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1gPFXsq7dsWueGU4EfO5hi8SJXV9kIaEiKlcxfpSxvr2sIJDP2Jkoow1PhZ5el6HdllgvFzHPbxF/fk1kQIXLw==", "article"=>{"title"=>"", "topic"=>"others", "text"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.2ms)
+  Rendered articles/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/articles" for ::1 at 2022-02-15 08:57:41 -0300
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 50ms (Views: 39.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 08:57:43 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (4.9ms)
+  Rendered articles/new.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 66ms (Views: 62.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:57:46 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aewozL+NGhxcSzh/KngDUnjwsT3+fTiogbwVXKp20mXdmhczQJ4weqhrmw5UdwSTTq9NZdKRW/nVcI3foCeA/Q==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-15 08:57:52 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fKnuGuZ7/to9BuDpt2bD7XH7ktLCZvtvxboqX79QIrZcGqkHE6LsvR9Lu8ff7yTsKLDXG+MxQFcI7o+v1ADzYw==", "article"=>{"title"=>"", "topic"=>"others", "text"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (4.0ms)
+  Rendered articles/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 40ms (Views: 35.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:58:00 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3r4ypP37Xl687njP2vbQd20rUGl0o7xEI4zo3fJvBj7+DXW5CCJMOZ6jI+Gyfzd2NGAVoFX0B3zu2E0tmT/X6w==", "article"=>{"title"=>"", "topic"=>"others", "text"=>""}, "commit"=>"Create Article"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/articles_controller.rb:23
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.7ms)
+  Rendered articles/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 44ms (Views: 39.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:59:02 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/hZrl5RJfcQpo/UCPCK5ld9fGXJGU4sxNB6tqB2I+ILepSyKYZBvowvurixUq16UhhRcu2cEMAn5SghYdtgpVw==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 3.7ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles" for ::1 at 2022-02-15 08:59:16 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/daricruz/.rvm/gems/ruby-2.7.2/gems/web-console-3.7.0/lib/web_console/middleware.rb:135
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  ↳ app/views/articles/index.html.erb:12
+  Rendered articles/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 261ms (Views: 245.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 08:59:17 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (28.5ms)
+  Rendered articles/new.html.erb within layouts/application (31.1ms)
+Completed 200 OK in 75ms (Views: 73.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 08:59:21 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DKqfKxpi+WqnEqV5H7X2nBpfEpEct6GgFFKZBnyxGve43KDU5XHTDFMyBghhuvFdLADuyTBbwvFAngGFduBIbw==", "article"=>{"title"=>"", "topic"=>"otherss", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('otherss' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started GET "/articles/new" for ::1 at 2022-02-15 09:13:00 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.3ms)
+  Rendered articles/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 44ms (Views: 31.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/articles/new" for ::1 at 2022-02-15 09:13:01 -0300
+Processing by ArticlesController#new as HTML
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (2.6ms)
+  Rendered articles/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 39ms (Views: 36.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/articles" for ::1 at 2022-02-15 09:13:04 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mYy3Kv2xWIbG9dlKD1RjRKKluJWnJ0ZClQ/CN/aHwF25P/A3CGhK4eS4gmRn3YRF++79XIZw/XpYW2fHndcRiA==", "article"=>{"title"=>"", "topic"=>"sd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError ('sd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
+Started POST "/articles" for ::1 at 2022-02-15 09:14:39 -0300
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mYy3Kv2xWIbG9dlKD1RjRKKluJWnJ0ZClQ/CN/aHwF25P/A3CGhK4eS4gmRn3YRF++79XIZw/XpYW2fHndcRiA==", "article"=>{"title"=>"", "topic"=>"sd", "text"=>""}, "commit"=>"Create Article"}
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.6ms)
+
+
+  
+ArgumentError ('sd' is not a valid topic):
+  
+app/controllers/articles_controller.rb:21:in `create'
