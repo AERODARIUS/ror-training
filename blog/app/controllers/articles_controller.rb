@@ -2,11 +2,12 @@ class ArticlesController < ApplicationController
   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
   def index
-    @articles = Article.all
+    @articles = Article.filter(params.slice(:title, :topic, :start_date, :end_date)).page(params[:page]).order('created_at DESC')
   end
 
   def show
     @article = Article.find(params[:id])
+    @comments = Comment.where(:article_id => @article.id).paginate(:page => params[:page]).order('created_at DESC')
   end
 
   def new
@@ -46,6 +47,6 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :text, :topic, :previous_version_date)
+      params.require(:article).permit(:title, :text, :topic)
     end
 end
