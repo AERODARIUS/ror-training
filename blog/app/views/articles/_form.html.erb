@@ -21,8 +21,7 @@
  
   <p>
     <%= f.label :topic %><br>
-    <%#= f.text_field :topic %>
-    <%= f.select :topic, options_for_select(Article.topics.map {|key, value| [key.titleize, Article.topics.key(value)]}, @article.topic) %>
+    <%= f.select :topic, options_for_select(@topics, @article.topic) %>
   </p>
  
   <p>
