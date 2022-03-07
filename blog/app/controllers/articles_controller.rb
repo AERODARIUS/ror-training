@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.filter(params.slice(:title, :topic, :start_date, :end_date)).page(params[:page]).order('created_at DESC')
+    get_topics
   end
 
   def show
@@ -12,10 +13,12 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    get_topics
   end
 
   def edit
     @article = Article.find(params[:id])
+    get_topics
   end
 
   def create
@@ -48,5 +51,9 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title, :text, :topic)
+    end
+
+    def get_topics
+      @topics = Article.topics.map {|key, value| [key.titleize, Article.topics.key(value)]}
     end
 end

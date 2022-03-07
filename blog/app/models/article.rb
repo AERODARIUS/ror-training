@@ -25,14 +25,18 @@ class Article < ApplicationRecord
 
   scope :filter_by_title, -> (title) { where title: title }
   scope :filter_by_topic, -> (topic) { where topic: topic }
-  scope :filter_by_start_date, -> (datetime) { where("previous_version_date > ?", Date.parse(datetime)) }
-  scope :filter_by_end_date, -> (datetime) { where("previous_version_date < ?", Date.parse(datetime)) }
+  scope :filter_by_start_date, -> (datetime) { where("previous_version_date > ?", self.parse_date(datetime)) }
+  scope :filter_by_end_date, -> (datetime) { where("previous_version_date < ?", self.parse_date(datetime)) }
 
   before_save do
     self.previous_version_date = self.updated_at
   end
 
   private
+
+  def self.parse_date datetime
+    DateTime.new(*datetime.values.map(&:to_i))
+  end
 
   def previous_version_date_not_in_future
     if previous_version_date.present? && previous_version_date > Date.today
