@@ -1,29 +1,33 @@
+# frozen_string_literal: true
+
+# Controller for managing articles
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
 
   def index
-    @articles = Article.filter(params.slice(:title, :topic, :start_date, :end_date)).page(params[:page]).order('created_at DESC')
-    get_topics
+    @articles = Article.filter(params.slice(:title, :topic, :start_date,
+                                            :end_date)).page(params[:page]).order('created_at DESC')
+    list_topics
   end
 
   def show
     @article = Article.find(params[:id])
-    @comments = Comment.where(:article_id => @article.id).paginate(:page => params[:page]).order('created_at DESC')
+    @comments = Comment.where(article_id: @article.id).paginate(page: params[:page]).order('created_at DESC')
   end
 
   def new
     @article = Article.new
-    get_topics
+    list_topics
   end
 
   def edit
     @article = Article.find(params[:id])
-    get_topics
+    list_topics
   end
 
   def create
     @article = Article.new(article_params)
-  
+
     if @article.save
       redirect_to @article
     else
@@ -33,7 +37,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-  
+
     if @article.update(article_params)
       redirect_to @article
     else
@@ -44,16 +48,17 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-  
+
     redirect_to articles_path
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :text, :topic)
-    end
 
-    def get_topics
-      @topics = Article.topics.map {|key, value| [key.titleize, Article.topics.key(value)]}
-    end
+  def article_params
+    params.require(:article).permit(:title, :text, :topic)
+  end
+
+  def list_topics
+    @topics = Article.topics.map { |key, value| [key.titleize, Article.topics.key(value)] }
+  end
 end
