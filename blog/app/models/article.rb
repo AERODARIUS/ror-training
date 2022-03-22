@@ -32,6 +32,7 @@ class Article < ApplicationRecord
   scope :filter_by_topic, ->(topic) { where topic: topic }
   scope :filter_by_start_date, ->(datetime) { where('previous_version_date > ?', parse_date(datetime)) }
   scope :filter_by_end_date, ->(datetime) { where('previous_version_date < ?', parse_date(datetime)) }
+  scope :filter_by_user_id, ->(user_id) { where user_id: user_id }
 
   before_save do
     self.previous_version_date = updated_at

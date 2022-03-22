@@ -2,12 +2,11 @@
 
 # Controller for managing articles
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'dhh', password: 'secret', except: %i[index show]
-
   def index
-    @articles = Article.filter(params.slice(:title, :topic, :start_date,
+    @articles = Article.filter(params.slice(:title, :topic, :user_id, :start_date,
                                             :end_date)).page(params[:page]).order('created_at DESC')
     list_topics
+    list_users
   end
 
   def show
@@ -18,15 +17,19 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     list_topics
+    list_users
   end
 
   def edit
     @article = Article.find(params[:id])
     list_topics
+    list_users
   end
 
   def create
     @article = Article.new(article_params)
+    list_topics
+    list_users
 
     if @article.save
       redirect_to @article
@@ -36,7 +39,11 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    puts article_params
+    puts params
     @article = Article.find(params[:id])
+    list_topics
+    list_users
 
     if @article.update(article_params)
       redirect_to @article
@@ -55,10 +62,14 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :text, :topic)
+    params.require(:article).permit(:title, :text, :topic, :user_id)
   end
 
   def list_topics
     @topics = Article.topics.map { |key, value| [key.titleize, Article.topics.key(value)] }
+  end
+
+  def list_users
+    @users = User.all.map { |user| [user.name, user.id] }
   end
 end
