@@ -8,6 +8,7 @@
     <th>Topic</th>
     <th>Text</th>
     <th>Previous Version</th>
+    <th>Author</th>
     <th colspan="3"></th>
   </tr>
  
@@ -17,6 +18,7 @@
       <td><%= article.topic %></td>
       <td><%= article.text %></td>
       <td><%= article.previous_version_date %></td>
+      <td><%= article.user ? link_to(article.user.email, user_path(article.user) ): '' %></td>
       <td><%= link_to 'Show', article_path(article) %></td>
       <td><%= link_to 'Edit', edit_article_path(article) %></td>
       <td><%= link_to 'Destroy', article_path(article),

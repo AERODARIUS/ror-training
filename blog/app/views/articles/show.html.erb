@@ -1,22 +1,8 @@
+<%= render partial: 'article', locals: {article: @article} %>
 
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
- 
-<p>
-  <strong>Topic:</strong>
-  <%= @article.topic %>
-</p>
- 
-<p>
-  <strong>Previous Version:</strong>
-  <%= @article.previous_version_date %>
+  <strong>Author:</strong>
+  <%= @article.user ? link_to(@article.user.email, user_path(@article.user) ): '' %>
 </p>
  
 <h2>Comments</h2>

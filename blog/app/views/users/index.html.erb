@@ -1,0 +1,23 @@
+<h1>Listing Users</h1>
+<%= render "filters" %>
+<%= link_to 'New user', new_user_path %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Birthday</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.birthday %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @users %>

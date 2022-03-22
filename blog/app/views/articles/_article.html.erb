@@ -1,0 +1,21 @@
+<p>
+  <strong>Title:</strong>
+  <%= article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= article.text %>
+</p>
+ 
+<p>
+  <strong>Topic:</strong>
+  <%= article.topic %>
+</p>
+ 
+<% if !article.previous_version_date.nil? %>
+  <p>
+    <strong>Previous Version:</strong>
+    <%= article.previous_version_date %>
+  </p>
+<% end %>

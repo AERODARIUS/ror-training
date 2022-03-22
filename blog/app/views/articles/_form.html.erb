@@ -30,6 +30,11 @@
   </p>
  
   <p>
+    <%= f.label :user_id, 'Author' %><br>
+    <%= f.collection_select :user_id, User.order(:name), :id, :name %>
+  </p>
+ 
+  <p>
     <%= f.submit %>
   </p>
  
